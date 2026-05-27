@@ -20,7 +20,7 @@ public class JosephusSim {
          while(current.next != null) {
             current = current.next;
          }
-         circle.next = current; 
+         current = circle.next; 
          // remember the last node as the one in front of the next to get eliminated
          
          // generate, print, and save the random elimination count
@@ -57,7 +57,7 @@ public class JosephusSim {
       String result = "";
       // if there's only one person left, print them as the last survivor
         if(size == 1) {
-         return person.data;
+         return circle.name;
       } 
       // print the remaining survivors (watch out for infinite loop since list is circular)
       else {
