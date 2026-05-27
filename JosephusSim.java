@@ -45,12 +45,20 @@ public class JosephusSim {
    }
    
    public String toString() {
+      String result = "";
       // if there's only one person left, print them as the last survivor
         if(size == 1) {
-         //return person.data;
+         return person.data;
       } 
       // print the remaining survivors (watch out for infinite loop since list is circular)
-    return ""; 
+      else {
+         while(current.next != front) {
+            result += current.data;
+            current = current.next;
+         } 
+      }
+       return result;  
+
    }
 
 }
