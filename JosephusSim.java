@@ -21,7 +21,7 @@ public class JosephusSim {
          // make the ring circular by attaching last node's next to front
          track = circle;
          while(track.next != null) {
-            track = current.next;
+            track = track.next;
          }
          track = circle.next; 
          Random r = new Random();  
@@ -67,8 +67,8 @@ public class JosephusSim {
       // print the remaining survivors (watch out for infinite loop since list is circular)
       else {
          while(track.next != circle) {
-            result += track.name;
-            current = track.next;
+            result += track.name + ", ";
+            track = track.next;
          } 
       }
         return result;  
