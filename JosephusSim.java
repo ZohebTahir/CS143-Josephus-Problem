@@ -43,13 +43,19 @@ public class JosephusSim {
    
    public void eliminate() {
       // count to the elimination count
-      for(int i = 0; i < eliminationCount; i++) {
+      for(int i = 1; i < eliminationCount; i++) {
          track = track.next;   
       }
+      track = track.next.next;
+      PersonNode temp = track; 
       size--;
+      while(track.name != circle.name) {
+         track = track.next;
+      }
+      circle = temp; 
       
       // print who will be eliminated
-      System.out.print(track.name + " elimnated");
+      System.out.print(track.name + " eliminated");
       // eliminate the person and update "front" of the circle and size
 
    }
@@ -70,13 +76,14 @@ public class JosephusSim {
       } 
       // print the remaining survivors (watch out for infinite loop since list is circular)
       else {
-         while(track.next != circle) {
-            result += track.name + ", ";
-            track = track.next;
-         } 
+        PersonNode current = circle;
+        while(current.next != circle) {
+         result += current.name + ", ";
+         current = current.next;
+        }
+        result += current.name;
       }
-        return result;  
-
+       return result;   
    }
 
 }
