@@ -12,15 +12,20 @@ public class JosephusSim {
       try {
          // load names from the file in order, generating a singly linked list of PersonNodes
          Scanner file = new Scanner(new File(fileName));
-         while(fileName.hasNext()) {
-            add(fileName.next());    
+         int numOfStudents = 0; 
+         
+         while(file.hasNext()) {
+            add(file.next());
+            size++;     
          }
          // make the ring circular by attaching last node's next to front
-         PersonNode current = circle;
-         while(current.next != null) {
-            current = current.next;
+         track = circle;
+         while(track.next != null) {
+            track = current.next;
          }
-         current = circle.next; 
+         track = circle.next; 
+         Random r = new Random();  
+         eliminationCount = r.nextInt(size / 2) + 1; // 1 to 100 is this correct?
          // remember the last node as the one in front of the next to get eliminated
          
          // generate, print, and save the random elimination count
@@ -61,9 +66,9 @@ public class JosephusSim {
       } 
       // print the remaining survivors (watch out for infinite loop since list is circular)
       else {
-         while(current.next != front) {
-            result += current.data;
-            current = current.next;
+         while(track.next != circle) {
+            result += track.name;
+            current = track.next;
          } 
       }
         return result;  
