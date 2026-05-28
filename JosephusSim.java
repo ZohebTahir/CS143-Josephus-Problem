@@ -43,9 +43,13 @@ public class JosephusSim {
    
    public void eliminate() {
       // count to the elimination count
+      for(int i = 0; i < eliminationCount; i++) {
+         track = track.next;   
+      }
+      size--;
       
       // print who will be eliminated
-      
+      System.out.print(track.name + " elimnated");
       // eliminate the person and update "front" of the circle and size
 
    }
